@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/login.css">
+    <!-- Lato font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <title>Log in</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+        integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+        crossorigin="anonymous"></script>
+    <script src="static/js/login.js"></script>
+</head>
+<body>
+    <div id="login-div">
+        <div id="title">Ianyourgod</div>
+        <div id="subtitle">Pray to me! >:)</div>
+
+        <div class="form">
+            <div id="user">
+                <input id="uinp" type="text" placeholder="Username">
+            </div>
+
+            <div id="pass">
+                <input id="pinp" type="text" placeholder="Password">
+            </div>
+
+            <button onclick="submit()" class="subm">Submit</button>
+            <br><br>
+            <a id="ns" href="/signup">New here? Sign up!</a>
+        </div>
+    </div>
+</body>
+</html>

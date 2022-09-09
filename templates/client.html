@@ -26,8 +26,6 @@
 
         socket.on("connect", (name) => {
             let p = document.createElement("p")
-            var namee = name
-            console.log(namee, name)
             p.innerText = "You're connected"
             messageContainer.appendChild(p)
         })

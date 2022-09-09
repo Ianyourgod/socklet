@@ -1,0 +1,53 @@
+* {
+    font-family: "Lato",sans-serif;
+}
+body {
+    background-color: aqua;
+}
+#login-div {
+    margin: auto;
+    width:20%;
+    background-color: white;
+    padding: 8%;
+    align-items: center;
+    text-align: center;
+}
+#title {
+    font-weight: bolder;
+    font-size:200%
+}
+#subtitle {
+    font-weight: bolder;
+    font-size:100%
+}
+.form {
+    width:100%;
+    margin-top: 5%;
+}
+.form input {
+    font-size:130%;
+    padding: 5%, 10%,5%,3%;
+    border:none;
+    outline:none;
+    background: none;
+}
+#user,#pass {
+    display:block;
+    border-radius: 10px;
+    border: .1px solid black;
+    padding:4%;
+    margin:4% 0;
+}
+.subm {
+    width:100%;
+    padding:7%;
+    border:none;
+    font-size: 18px;
+    border-radius: 20px;
+    background-color: rgb(16, 158, 205);
+    color:white;
+}
+#ns {
+    color:black;
+    text-decoration: none;
+}
