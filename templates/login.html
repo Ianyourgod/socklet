@@ -21,17 +21,14 @@
         <div id="subtitle">Pray to me! >:)</div>
 
         <div class="form">
-            <div id="user">
-                <input id="uinp" type="text" placeholder="Username">
-            </div>
+            <form action="/chat" method="post" id="frm">
+                <div id="user">
+                    <input id="uinp" type="text" name="user" placeholder="Username">
+                </div>
 
-            <div id="pass">
-                <input id="pinp" type="text" placeholder="Password">
-            </div>
-
-            <button onclick="submit()" class="subm">Submit</button>
+                <button type="submit" class="subm">Submit</button>
+            </form>
             <br><br>
-            <a id="ns" href="/signup">New here? Sign up!</a>
         </div>
     </div>
 </body>
