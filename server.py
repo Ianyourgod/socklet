@@ -11,7 +11,13 @@ temp = []
 def login():
     return render_template("login.html")
 
+@socketio.on("connected")
+def conn(user):
+    print("connect")
+    sids[request.sid] = user
+
 players = {}
+sids = {}
 @app.route("/game", methods=['POST'])
 def game():
     user = request.form['user']
@@ -42,13 +48,18 @@ def move(dir, name):
         players[name][0] -= 5
     else:
         players[name][0] += 5
-    # list that will be sent to all of the clients]
+    # list that will be sent to all of the clients
     update()
 
-@socketio.on('discon')
-def disconnect(name):
-    print("discon")
-    del players[name]
+@socketio.on('disconnect')
+def disconnect():
+    print("del")
+    name = sids[request.sid]
+    try:
+        del players[name]
+        del sids[request.sid]
+    except KeyError:
+        print(sids)
     update()
     
 
