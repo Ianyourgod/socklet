@@ -54,8 +54,8 @@ def move(dir, name):
 @socketio.on('disconnect')
 def disconnect():
     print("del")
-    name = sids[request.sid]
     try:
+        name = sids[request.sid]
         del players[name]
         del sids[request.sid]
     except KeyError:
