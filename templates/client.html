@@ -40,6 +40,7 @@
         })
 
         socket.on('message', (message) => {
+            console.log("recieved")
             let messageElement = document.createElement("p")
             messageElement.innerText = message
             messageElement.className = "msgs"
