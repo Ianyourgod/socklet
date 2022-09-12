@@ -1,34 +1,56 @@
 from flask import Flask, render_template, request,redirect
-from flask_socketio import SocketIO, send
+from flask_socketio import SocketIO, send, emit
 from time import sleep
 
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
 temp = ""
-
-
-@socketio.on("message")
-def sendMessage(message):
-    send(message, broadcast=True)
-    # send() function will emit a message vent by default
+temp = []
 
 @app.route("/")
-def loginPage():
+def login():
     return render_template("login.html")
 
-@socketio.on("login")
-def login(user):
-    global temp
-    temp = user
-
-@app.route("/chat", methods=['POST'])
-def message():
+players = {}
+@app.route("/game", methods=['POST'])
+def game():
     user = request.form['user']
     if user == "":
         return redirect("/")
+    try:
+        players[user]
+        return redirect("/")
+    except KeyError:
+        pass
     datae = {'name':user}
-    return render_template("client.html",data=datae)
+    players[user] = [0,0]
+    return render_template("game.html", data=datae)
 
+def update():
+    sendi = []
+    for key in players:
+        sendi.append(players[key])
+    emit('update',sendi, broadcast=True)
+
+@socketio.on("move")
+def move(dir, name):
+    if dir == "up":
+        players[name][1] -= 5
+    elif dir == "down":
+        players[name][1] += 5
+    elif dir == "left":
+        players[name][0] -= 5
+    else:
+        players[name][0] += 5
+    # list that will be sent to all of the clients]
+    update()
+
+@socketio.on('discon')
+def disconnect(name):
+    print("discon")
+    del players[name]
+    update()
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
