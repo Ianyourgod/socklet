@@ -15,6 +15,7 @@ def login():
 def conn(user):
     print("connect")
     sids[request.sid] = user
+    players[user] = [0,0]
 
 players = {}
 sids = {}
